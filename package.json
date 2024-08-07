@@ -1,5 +1,5 @@
 {
-  "name": "audi-gaugecluster",
+  "name": "gaugecluster",
   "version": "0.0.1",
   "main": "src/index.tsx",
   "author": "cchosch",
