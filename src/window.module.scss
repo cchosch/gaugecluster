@@ -1,10 +1,8 @@
 
 .window {
-    display: flex;
-    justify-content: space-between;
+    position: relative;
     border: 1px solid white;
     align-items: center;
-    padding: 0px 20px;
     box-sizing: border-box;
 
 }

@@ -43,6 +43,7 @@
     "@react-three/fiber": "^8.15.16",
     "@reduxjs/toolkit": "^1.9.3",
     "buffer": "^6.0.3",
+    "cubic-spline": "^3.0.3",
     "decimal.js": "^10.4.3",
     "detect-collisions": "^8.0.4",
     "js-sha256": "^0.9.0",

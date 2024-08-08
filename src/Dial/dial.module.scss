@@ -1,9 +1,16 @@
 
 .dial {
-    height: 80%;
-    aspect-ratio: 1/1;
+    width: 32%;
+    position: absolute;
     border-radius: 100%;
-    border: 1px solid white;
+    left: 3.5%;
+    top: 50%;
+    transform: translateY(-50%);
+
+    &.right {
+        left: auto;
+        right: 3.5%;
+    }
 }
 
 
