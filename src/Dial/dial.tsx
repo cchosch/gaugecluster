@@ -15,6 +15,7 @@ export const Dial: FC<DialProps> = ({isRight}) => {
     const noiseId = useMemo(() => `noise${Math.random()}`, []);
     const tick = getTickPoint(140, -35);
     const tick2 = getTickPoint(140, -42);
+    const gradCenter = {x: 150, y: 150};
 
     return <svg viewBox="0 0 300 300" className={styles.dial + " " + (isRight ? "" : styles.right)}>
         <defs>
@@ -30,8 +31,9 @@ export const Dial: FC<DialProps> = ({isRight}) => {
             </filter>
 
         </defs>
+        <path/>
         <g style={{
-            transform: "rotate(-135deg)",
+            // transform: "rotate(-135deg)",
             transformOrigin: "50% 50%",
         }}>
             <mask id={maskId}>
@@ -54,12 +56,13 @@ export const Dial: FC<DialProps> = ({isRight}) => {
                 <circle cx="150" cy="150" r="148" strokeWidth="3" stroke="white"/>
 
                 <circle cx="150" cy="150" r="137" strokeWidth="5" stroke={`url(#${gradientId})`}/>
-                <circle cx="150" cy="150" r="137" strokeWidth="5" opacity={0.3} stroke="white"/>
-                <circle cx="150" cy="150" r="114" strokeWidth="42" stroke={`url(#${gradientId})`}/>
+                {<circle cx="150" cy="150" r="137" strokeWidth="5" opacity={0.3} stroke="white"/>}
+                {<circle cx={gradCenter.x} cy={gradCenter.y} r="114" strokeWidth="42" stroke={`url(#${gradientId})`}/>}
 
                 <circle cx="150" cy="150" r="89.3" fill="white"/>
             </g>
-            <rect width="300" height="300" filter={`url(#${noiseId})`} opacity={0.2} mask={`url(#${secondMaskId})`}/>
+            <rect width="300" height="300" filter={`url(#${noiseId})`} opacity={0.05} mask={`url(#${secondMaskId})`}/>
+            <path d="M 150 150 c "/>
 
 
 
@@ -76,6 +79,11 @@ function _generateBottomClip(angle: number): string {
 }
 
 function getTickPoint(dist: number, angle: number): Vec2 {
-    const ang = deg2rad(-angle-135);
+    return getPointFromAngle(dist, -angle-135);
+}
+
+function getPointFromAngle(dist: number, angle: number): Vec2 {
+    const ang = deg2rad(angle);
     return new Vector2(Math.abs(dist)*-Math.cos(ang), Math.abs(dist)*Math.sin(ang));
 }
+
